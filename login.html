@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Log in Pizzabook</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+  <style>
+    @font-face {
+      font-family: myFirstFont;
+      src: url(Segoe-UI-Historic.ttf);
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      font-family: myFirstFont, Helvetica, Arial, sans-serif;
+    }
+    img{
+      margin: 5px auto;
+      width: 60%;
+      max-width: 200px;
+    }
+    h2{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="./images/logo.png" width="80%" style="margin: 0 auto;" alt="">
+  <h2>PizzaBook</h2>
+  <div id="firebaseui-auth-container"></div>
+  <!-- <div id="loader">Loading...</div> -->
+
+  <script src="fireBase.js"></script>
+  <script src='login.js'></script>
+</body>
+</html>

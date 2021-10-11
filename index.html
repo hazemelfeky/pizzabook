@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pizzabook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/styles.css" rel="stylesheet">
+    <link rel="icon" href="./images/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-firestore.js"></script>
+  </head>
+  <body id="main_container">
+    <!-- head -->
+    <nav>
+
+          <div class="nav--left">
+            <img src="./images/logo.png" width="40px">
+            <div class="nav--search">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search">
+            </div>
+            <div class="serch--small">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+  
+          <div class="nav--center">
+            <div class="nav--center--page active">
+              <i class="fas fa-home"></i>
+            </div>
+            <div class="nav--center--page">
+              <i class="fas fa-user-friends"></i>
+            </div>
+            <div class="nav--center--page">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="nav--center--page">
+              <i class="fas fa-store"></i>
+            </div>
+          </div>
+  
+          <div class="nav--right">
+            <div id="user-info" class="user-info">
+              <img class="user-img" src="./images/1.jpg" alt="user">
+              <p class="user-name">Hazm</p>
+            </div>
+            <div class="nav--option">
+              <i class="fab fa-facebook-messenger"></i>
+            </div>
+            <div class="nav--option nav--option--special">
+              <i class="fas fa-list"></i>
+            </div>
+            <div class="nav--option">
+              <i class="fas fa-bell"></i>
+            </div>
+            <div class="nav--option">
+              <i class="fas fa-caret-down"></i>
+            </div>
+          </div>
+
+    </nav>
+
+
+    <!-- app -->
+    <div class="app">
+      <div class="app--left">
+
+        <div class="app--left--item">
+          <div class="app--left--item--pic">
+            <img class="user-img" src="./images/1.jpg" alt="">
+          </div>
+          <h4 class="user-name">Pizza Steve</h4>
+        </div>
+
+        <div class="app--left--item">
+          <div class="app--left--item--pic">
+            <img src="./images/friends.png" alt="">
+          </div>
+          <h4>Friends</h4>
+        </div>
+
+        <div class="app--left--item">
+          <div class="app--left--item--pic">
+            <img src="./images/groups.png" alt="">
+          </div>
+          <h4>Groups</h4>
+        </div>
+
+        <div class="app--left--item">
+          <div class="app--left--item--pic">
+            <img src="./images/market.png" alt="">
+          </div>
+          <h4>Market</h4>
+        </div>
+
+        <div class="app--left--item">
+          <div class="app--left--item--pic">
+            <img src="./images/covid.png" alt="">
+          </div>
+          <h4>COVID-19 Information Center</h4>
+        </div>
+
+        <div class="app--left--item">
+          <div class="app--left--item--pic down">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <h4>See More</h4>
+        </div>
+
+      </div>
+
+      <div class="app--center">
+        <div class="stories">
+          <div class="story">
+            <img src="./images/none.png" alt="">
+            <h4>Mohamed Salah</h4>
+          </div>
+          <div class="story">
+            <img src="./images/none.png" alt="">
+            <h4>Mohamed Salah</h4>
+          </div>
+          <div class="story">
+            <img src="./images/none.png" alt="">
+            <h4>Mohamed Salah</h4>
+          </div>
+          <div class="story">
+            <img src="./images/none.png" alt="">
+            <h4>Mohamed Salah</h4>
+          </div>
+          <div class="story">
+            <img src="./images/none.png" alt="">
+            <h4>Mohamed Salah</h4>
+          </div>
+        </div>
+
+        <div class="create--post">
+          <div class="create--post--top">
+            <img class="user-img" src="./images/1.jpg" alt="">
+            <form onsubmit="event.preventDefault(); return createPost()">
+              <input id="post-details" type="text" placeholder="What is on your mind, pizza?">
+              <input type="submit" value="" style="display: none;">
+            </form>
+          </div>
+          <div class="create--post--bot">
+            <div class="create--post--bot__item">
+              <i class="fas fa-video" style="color: #F23E5C;"></i>
+              <h4>Live Video</h4>
+            </div>
+            <div class="create--post--bot__item">
+              <i class="far fa-images" style="color: #58C472;"></i>
+              <h4>Photo/Video</h4>
+            </div>
+            <div class="create--post--bot__item">
+              <i class="fas fa-laugh-beam" style="color: #F8C03E;"></i>
+              <h4>Feeling/Activity</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="posts" id="posts">
+          
+          <div class="post">
+            <div class="post--user">
+              <img src="./images/1.jpg" alt="">
+              <div class="post--user--name-time">
+                <h4>Pizza Steve</h4>
+                <p>6 weeks ago · 🌎</p>
+              </div>
+            </div>
+            <!-- <p class="post--details" dir="auto">hazem ahmed</p> -->
+            <p class="post--details" dir="auto">بسم الله الرحمن الرحيم</p>
+            <div class="post--actions">
+              <div class="post--action">
+                <i class="far fa-thumbs-up"></i>
+                <h4>Like</h4>
+              </div>
+              <div class="post--action">
+                <i class="far fa-comment-alt"></i>
+                <h4>Comment</h4>
+              </div>
+              <div class="post--action">
+                <i class="fas fa-share"></i>
+                <h4>Share</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="post">
+            <div class="post--user">
+              <img src="./images/1.jpg" alt="">
+              <div class="post--user--name-time">
+                <h4>Pizza Steve</h4>
+                <p>6 weeks ago</p>
+              </div>
+            </div>
+            <p class="post--details" dir="auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti qui officiis illum quos excepturi? Sunt, ducimus laudantium, ad qui voluptatibus, dicta quibusdam voluptate esse praesentium fugit pariatur quo officia voluptas.</p>
+            <div class="post--actions">
+              <div class="post--action">
+                <i class="far fa-thumbs-up"></i>
+                <h4>Like</h4>
+              </div>
+              <div class="post--action">
+                <i class="far fa-comment-alt"></i>
+                <h4>Comment</h4>
+              </div>
+              <div class="post--action">
+                <i class="fas fa-share"></i>
+                <h4>Share</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app--right">
+        <div class="contacts">
+          <div class="contacts--title">
+            <h3>Contacts</h3>
+            <div class="contacts--title--actions">
+              <div>
+                <i class="fas fa-video"></i>
+              </div>
+              <div>
+                <i class="fas fa-search"></i>
+              </div>
+              <div>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+          </div>
+          <div class="app--left--item">
+            <div class="app--left--item--pic">
+              <img src="./images/ahmed.jpg" alt="">
+            </div>
+            <h4>Ahmed Osama Younis</h4>
+          </div>
+          <div class="app--left--item">
+            <div class="app--left--item--pic">
+              <img src="./images/ezzat.jpg" alt="">
+            </div>
+            <h4>Ezzat Hamed</h4>
+          </div>
+          <div class="app--left--item">
+            <div class="app--left--item--pic">
+              <img src="./images/reda.jpg" alt="">
+            </div>
+            <h4>David Otunga</h4>
+          </div>
+          <div class="app--left--item">
+            <div class="app--left--item--pic">
+              <img src="./images/karim.jpg" alt="">
+            </div>
+            <h4>Karim Mohamed</h4>
+          </div>
+          <div class="app--left--item">
+            <div class="app--left--item--pic">
+              <img src="./images/asem.jpg" alt="">
+            </div>
+            <h4>Asem Mohamed</h4>
+          </div>
+          <div class="app--left--item">
+            <div class="app--left--item--pic">
+              <img src="./images/kotit.jpg" alt="">
+            </div>
+            <h4>Ahmed Kotit</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="fireBase.js"></script>
+    <script src='main.js'></script>
+  </body>
+</html>
